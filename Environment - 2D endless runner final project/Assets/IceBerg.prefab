@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8907742658122849472}
   - component: {fileID: 8401068528627659287}
   - component: {fileID: 7513937865008855289}
+  - component: {fileID: -193580677930211845}
   m_Layer: 0
   m_Name: IceBerg
   m_TagString: Untagged
@@ -133,3 +134,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-193580677930211845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7281877676476987300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08a7695d23db06347bd5c4b6de36979f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
