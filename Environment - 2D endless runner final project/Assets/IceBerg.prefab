@@ -146,3 +146,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a7695d23db06347bd5c4b6de36979f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spikeGenerator: {fileID: 0}
