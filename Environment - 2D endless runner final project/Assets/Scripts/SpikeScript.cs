@@ -15,16 +15,28 @@ public class SpikeScript : MonoBehaviour
         transform.Translate(Vector2.left * spikeGenerator.currentSpeed * Time.deltaTime);
     }
 
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("nextline"))
         {
-            spikeGenerator.GenerateNextSpikeWithGap();
+           spikeGenerator.GenerateNextSpikeWithGap();
         }
         if(collision.gameObject.CompareTag("Finish"))
         {
             Destroy(this.gameObject);
         }
+        if (collision.gameObject.CompareTag("player"))
+        {
+            Debug.Log("collision");
+            //Application.Quit();
+        }
     }
-
+    
 }
+    
+
+
+
+
+

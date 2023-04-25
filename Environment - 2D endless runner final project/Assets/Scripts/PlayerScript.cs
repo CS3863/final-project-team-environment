@@ -1,5 +1,8 @@
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -7,12 +10,16 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField]
     bool isGrounded = false;
+    public bool isAlive = true;
+    float score;
+
 
     Rigidbody2D RB;
 
         private void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
+        score = 0;
     }
 
     // Start is called before the first frame update
@@ -33,8 +40,14 @@ public class PlayerScript : MonoBehaviour
                
             }
         }
+
+        if (isAlive)
+        {
+            score += Time.deltaTime * 4;
+        }
     }
 
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("ground"))
@@ -44,5 +57,18 @@ public class PlayerScript : MonoBehaviour
                 isGrounded= true;
             }
         }
+        /*
+        if (collision.gameObject.CompareTag("spike"))
+        {
+            isAlive = false;
+            Debug.Log("collision");
+            //Application.Quit();
+            SpikeGenerator.currentSpeed = 0;
+        } 
+        */
+        
+        
+
     }
+    
 }

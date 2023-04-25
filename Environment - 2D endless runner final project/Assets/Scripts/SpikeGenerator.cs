@@ -1,4 +1,5 @@
 
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpikeGenerator : MonoBehaviour
@@ -9,6 +10,9 @@ public class SpikeGenerator : MonoBehaviour
     public float MinSpeed;
     public float currentSpeed;
     public float SpeedMultiplier;
+    bool isGrounded = false;
+    public bool isAlive = true;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -33,9 +37,13 @@ public class SpikeGenerator : MonoBehaviour
 
     private void Update()
     {
-        if(currentSpeed < MaxSpeed)
+        if (currentSpeed < MaxSpeed)
         {
             currentSpeed += SpeedMultiplier;
         }
-    }
-}
+      
+    } 
+        
+
+
+        }
