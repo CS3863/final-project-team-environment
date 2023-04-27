@@ -10,8 +10,9 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField]
     bool isGrounded = false;
-    public bool isAlive = true;
+    public static bool isAlive = true;
     float score;
+    public Text ScoreTxt;
 
 
     Rigidbody2D RB;
@@ -44,6 +45,7 @@ public class PlayerScript : MonoBehaviour
         if (isAlive)
         {
             score += Time.deltaTime * 4;
+            ScoreTxt.text = "Score =  " + score.ToString("F");
         }
     }
 
@@ -57,15 +59,16 @@ public class PlayerScript : MonoBehaviour
                 isGrounded= true;
             }
         }
-        /*
+        
         if (collision.gameObject.CompareTag("spike"))
         {
             isAlive = false;
             Debug.Log("collision");
+            Destroy(this.gameObject);
             //Application.Quit();
-            SpikeGenerator.currentSpeed = 0;
+            //SpikeGenerator.currentSpeed = 0;
         } 
-        */
+        
         
         
 

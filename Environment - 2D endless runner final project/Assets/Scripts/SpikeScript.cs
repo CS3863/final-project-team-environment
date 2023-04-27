@@ -26,12 +26,15 @@ public class SpikeScript : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        /*
         if (collision.gameObject.CompareTag("player"))
         {
             Debug.Log("collision");
             //Application.Quit();
         }
+        */
     }
+    
     
 }
     

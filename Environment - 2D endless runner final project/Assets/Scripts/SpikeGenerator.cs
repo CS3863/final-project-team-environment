@@ -23,7 +23,7 @@ public class SpikeGenerator : MonoBehaviour
 
     public void GenerateNextSpikeWithGap()
     {
-        float Wait = Random.Range(0.1f, 1.2f);
+        float Wait = Random.Range(1.5f, 2.2f);
         Invoke("generateSpike", Wait);
     }
 
@@ -36,14 +36,15 @@ public class SpikeGenerator : MonoBehaviour
     }
 
     private void Update()
-    {
+    {/*
         if (currentSpeed < MaxSpeed)
         {
             currentSpeed += SpeedMultiplier;
         }
-      
+*/    
     } 
         
 
 
-        }
+    }
+

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 /*
  * Data  is provided from ORNL DAAC, Distributed Active Archive Center for Biogeochemical Dynamics.
 
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 10.0f;
     public float xRange = 10.0f;
     public GameObject projectilePrefab;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -42,5 +44,6 @@ public class PlayerController : MonoBehaviour
         { //launch a projectile
             Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
         }
+
     }
 }
