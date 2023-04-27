@@ -21,7 +21,7 @@ public class icemass_datareader : MonoBehaviour
     public GameObject myCube;//prefab
     int rowCount; //variable 
 
-    private float startDelay = 2.0f;
+    private float startDelay = 1.0f;
     private float timeInterval = 1.0f;
     public object tempObj;
     public float tempFloat;

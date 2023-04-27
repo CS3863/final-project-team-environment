@@ -19,85 +19,47 @@ public class temperature_reader : MonoBehaviour
   * */
 
     List<Dictionary<string, object>> data;
-    public GameObject myCube;//prefab
-    int rowCount; //variable 
+    public GameObject water;
+    public Material material;
+    int rowCount; 
 
-    private float startDelay = 2.0f;
-    private float timeInterval = 1.0f;
-    public object tempObj;
-    public float tempFloat;
-    SpriteRenderer sprite;
+    private float startDelay = 0.0f;
+    private float timeInterval = 0.25f;
 
     void Awake()
     {
+        data = CSVReader.Read("Global Temperature Anomalies");//udata is the name of the csv file 
 
-        data = CSVReader.Read("temperature_trim");//udata is the name of the csv file 
-
-        for (var i = 0; i < data.Count; i++)
-        {
-            //name, age, speed, description, is the headers of the database
-            //print("mass difference " + data[i]["xco2"] + " ");
-        }
+        //for (var i = 0; i < data.Count; i++)
+        //{
+        //    print("global ocean temperature for row " + i + ", year " + data[i]["Year"] + ": " + data[i]["Value"]);
+        //}
         rowCount = 0;
-
-
-    }//end Awake()
-
-    // Use this for initialization
-    void Start()
-    {
-        InvokeRepeating("SpawnObject", startDelay, timeInterval);
-        sprite = GetComponent<SpriteRenderer>();
-    }//end Start()
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-
-            tempObj = data[rowCount]["temps"];
-            tempFloat = System.Convert.ToSingle(tempObj);
-            rowCount = UnityEngine.Random.Range(0, 20);
-
-            // Change the 'color' property of the 'Sprite Renderer'
-            sprite.color = new Color(tempFloat, tempFloat, tempFloat, tempFloat);
-        }        //As long as cube count is not zero, instantiate prefab
-        /*
-        while (cubeCount > 0)
-        {
-            Instantiate(myCube);
-            cubeCount--;
-            Debug.Log("cubeCount" + cubeCount);
-        }
-        */
-
-        /*
-        for (var i = 0; i < data.Count; i++)
-        {
-            object xco2 = data[i]["xco2"];//get age data
-
-            gameObject.transform.localScale = new Vector3((float)xco2, (float)xco2, (float)xco2);
-            //cubeCount += (int)xco2;//convert age data to int and add to cubeCount
-            //Debug.Log("cubeCount" + cubeCount);
-        }
-        */
-
-
-    }//end Update()
-
-
-    void SpawnObject()
-    {
-        tempObj = data[rowCount]["temps"];
-        tempFloat = System.Convert.ToSingle(tempObj);
-        //Minimum is 388.09
-        tempFloat = tempFloat;
-        rowCount++;
-
-        transform.localScale = new Vector3(tempFloat, tempFloat, tempFloat);
-        Debug.Log("tempFloat = " + tempFloat);
-        Debug.Log("Count = " + rowCount);
     }
 
+    void Start()
+    {
+        InvokeRepeating("updateColor", startDelay, timeInterval);
+    }
+
+
+    void updateColor()
+    {
+        if (rowCount < data.Count - 1) {
+            rowCount += 1;
+        } else {
+            rowCount = 0;
+        }
+        print("global ocean temperature for row " + rowCount + ", year " + data[rowCount]["Year"] + ": " + data[rowCount]["Value"]);
+        float oceanChange = map(System.Convert.ToSingle(dataObject), -0.64, 1.35, 0, 1);
+        material.color = new Color(yearData, dayData, hourData);
+        //transform.localScale = new Vector3(tempFloat, tempFloat, tempFloat);
+        //Debug.Log("tempFloat = " + tempFloat);
+        //Debug.Log("Count = " + rowCount);
+    }
+
+    float map(float value, float domainMin, float domainMax, float newDomainMin, float newDomainMax)
+    {
+        return newDomainMin + ((newDomainMax - newDomainMin) / (domainMax - domainMin)) * (value - domainMin);
+    }
 }
