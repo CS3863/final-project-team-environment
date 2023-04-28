@@ -32,7 +32,7 @@ public class SpikeGenerator : MonoBehaviour
     {
         GameObject SpikeIns = Instantiate(spike, transform.position, transform.rotation);
 
-        SpikeIns.GetComponent<SpikeScript>().spikeGenerator = this;
+        //SpikeIns.GetComponent<SpikeScript>().spikeGenerator = this;
     }
 
     private void Update()

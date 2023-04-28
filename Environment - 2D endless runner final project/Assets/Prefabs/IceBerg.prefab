@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 8907742658122849472}
   - component: {fileID: 8401068528627659287}
   - component: {fileID: 7513937865008855289}
-  - component: {fileID: -193580677930211845}
-  - component: {fileID: -7565805095648067505}
+  - component: {fileID: -2122392077039285823}
   m_Layer: 0
   m_Name: IceBerg
   m_TagString: spike
@@ -135,7 +134,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-193580677930211845
+--- !u!114 &-2122392077039285823
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,17 +147,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spikeGenerator: {fileID: 0}
---- !u!114 &-7565805095648067505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7281877676476987300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc7e358a39ab3304d895d2142cbc8d55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myCube: {fileID: 0}
-  tempFloat: 0

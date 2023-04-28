@@ -17,24 +17,27 @@ public class temperature_reader : MonoBehaviour
   * Tutorial link
   * https://github.com/tikonen/blog/tree/master/csvreader
   * */
-
-    List<Dictionary<string, object>> data;
     public GameObject water;
     public Material material;
-    int rowCount; 
+    // dataMode must be value between [1 , 3]
+    public int dataMode;
 
+    private float dataOffset = 0.33f;
+    private int dataUpperbound = 0;
+    private int dataLowerbound = 0;
+    private int rowCount;
+
+    private List<Dictionary<string, object>> data;
     private float startDelay = 0.0f;
     private float timeInterval = 0.25f;
 
     void Awake()
     {
         data = CSVReader.Read("Global Temperature Anomalies");//udata is the name of the csv file 
-
-        //for (var i = 0; i < data.Count; i++)
-        //{
-        //    print("global ocean temperature for row " + i + ", year " + data[i]["Year"] + ": " + data[i]["Value"]);
-        //}
-        rowCount = 0;
+        dataUpperbound = (int) (data.Count * map(dataMode, 1, 3, 0.33f, 1));
+        dataLowerbound = dataUpperbound - ((int) (data.Count * dataOffset));
+        rowCount = dataLowerbound;
+        //print("data mode: " + dataMode + ", data upperbound: " + dataUpperbound + ", data lowerbound: " + dataLowerbound);
     }
 
     void Start()
@@ -45,17 +48,16 @@ public class temperature_reader : MonoBehaviour
 
     void updateColor()
     {
-        if (rowCount < data.Count - 1) {
+        if (rowCount < dataUpperbound - 1) {
             rowCount += 1;
         } else {
-            rowCount = 0;
+            rowCount = dataLowerbound;
         }
-        print("global ocean temperature for row " + rowCount + ", year " + data[rowCount]["Year"] + ": " + data[rowCount]["Value"]);
-        float oceanChange = map(System.Convert.ToSingle(dataObject), -0.64, 1.35, 0, 1);
-        material.color = new Color(yearData, dayData, hourData);
-        //transform.localScale = new Vector3(tempFloat, tempFloat, tempFloat);
-        //Debug.Log("tempFloat = " + tempFloat);
-        //Debug.Log("Count = " + rowCount);
+        //print("global ocean temperature for row " + rowCount + ", year " + data[rowCount]["Year"] + ": " + data[rowCount]["Value"]);
+        float redChange = map(System.Convert.ToSingle((float) (data[rowCount]["Value"])), -0.64f, 1.35f, 1f, 4f);
+        float greenChange = map(System.Convert.ToSingle((float)(data[rowCount]["Value"])), -0.64f, 1.35f, -0.5f, 1f);
+        float blueChange = map(System.Convert.ToSingle((float)(data[rowCount]["Value"])), -0.64f, 1.35f, 1, -1);
+        material.color = new Color(redChange, 1f + greenChange, 2f + blueChange);
     }
 
     float map(float value, float domainMin, float domainMax, float newDomainMin, float newDomainMax)
