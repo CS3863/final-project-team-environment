@@ -46,7 +46,7 @@ public class icemass_datareader : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if (tag != "spike")
+        if (tag != "spike") //this is EXTREMELY IMPORTANT but I forgot how it works
         {
             InvokeRepeating("SpawnObject", startDelay, timeInterval);
         }
