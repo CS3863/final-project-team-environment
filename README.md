@@ -14,11 +14,11 @@ To install the game, create a new Unity project using the Runner Game template, 
 
 ## Authors
 
-Julian Abhari, programmer, data.
-Sean Korsmo, programmer, data.
-Julia Lorenz, programmer, data.
-Erielle Seigel, art.
-Diego Velasco, programmer, data
+Julian Abhari – programmer, data analyst.
+Sean Korsmo – programmer, data analyst.
+Julia Lorenz – Game producer, animator.
+Erielle Seigel – artist and creative director.
+Diego Velasco – programmer, data analyst
 
 ## License
 
