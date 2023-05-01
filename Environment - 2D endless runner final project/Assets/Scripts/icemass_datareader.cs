@@ -31,8 +31,8 @@ public class icemass_datareader : MonoBehaviour
     private int dataLowerbound = 0;
     private int rowCount;
 
-    private float startDelay = 1.0f;
-    private float timeInterval = 1.5f;
+    private float startDelay = 0.25f;
+    private float timeInterval = 2.2f;
     private List<Dictionary<string, object>> data;
 
     public static bool isAlive = true;
@@ -77,6 +77,7 @@ public class icemass_datareader : MonoBehaviour
         if (prefabIceberg != null)
         {
             float iceMass = map(System.Convert.ToSingle(data[rowCount]["IceMass Change"]), -5248.44f, 66.04f, 0.01f, 1);
+            timeInterval *= iceMass;
 
             print("ice mass for row " + rowCount + ": " + data[rowCount]["IceMass Change"]);
 

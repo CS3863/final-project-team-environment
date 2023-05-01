@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/1st Scene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/2nd Scene.unity
+    guid: ec0872948909c0440b55e2eb00ede112
+  - enabled: 1
+    path: Assets/Scenes/3rd Scene.unity
+    guid: 984119c4b1e776944bfc0964d4decf6d
+  - enabled: 1
+    path: Assets/Scenes/Death Scene.unity
+    guid: 99385056c4bcaca499e8846322a3d2dd
   m_configObjects: {}

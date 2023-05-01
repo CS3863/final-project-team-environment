@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class SpikeScript : MonoBehaviour
 {
+    public float speed = 12;
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.left * 2f * Time.deltaTime);
+        transform.Translate(Vector2.left * speed * Time.deltaTime);
     }
 
     

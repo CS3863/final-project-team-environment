@@ -497,7 +497,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.9882045
+  orthographic size: 5.1107497
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1415,7 +1415,7 @@ PrefabInstance:
       objectReference: {fileID: 1994290530}
     - target: {fileID: 658466984584556446, guid: 58e17ef97f93b314ba7d903d961b7a14, type: 3}
       propertyPath: dataMode
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 658466984584556446, guid: 58e17ef97f93b314ba7d903d961b7a14, type: 3}
       propertyPath: material
@@ -1628,6 +1628,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabIceberg: {fileID: 7281877676476987300, guid: 1e37b87ce72c67a41be0da7a23b4169d, type: 3}
-  dataMode: 3
+  dataMode: 1
   score: 0
   ScoreTxt: {fileID: 589916653}

@@ -42,10 +42,13 @@ public class PlayerScript : MonoBehaviour
             }
         }
 
-      
+
+
+
+
     }
 
-    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("ground"))
@@ -61,12 +64,14 @@ public class PlayerScript : MonoBehaviour
             isAlive = false;
             Debug.Log("collision");
             Destroy(this.gameObject);
+            System.Threading.Thread.Sleep(1000);
+            SceneManager.LoadScene("Death Scene");
             //Application.Quit();
             //SpikeGenerator.currentSpeed = 0;
-        } 
-        
-        
-        
+        }
+
+
+
 
     }
     
