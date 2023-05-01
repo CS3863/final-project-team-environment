@@ -1,6 +1,11 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
+using TMPro;
+using static UnityEditor.Experimental.GraphView.GraphView;
+
 
 
 /*
@@ -27,12 +32,16 @@ public class icemass_datareader : MonoBehaviour
     private int rowCount;
 
     private float startDelay = 1.0f;
-    private float timeInterval = 4.0f;
+    private float timeInterval = 1.5f;
     private List<Dictionary<string, object>> data;
+
+    public static bool isAlive = true;
+    public float score;
+    public TMP_Text ScoreTxt;
 
     void Awake()
     {
-        data = CSVReader.Read("greenland_mass_trim");//udata is the name of the csv file 
+        data = CSVReader.Read("IceMassDataYear");//udata is the name of the csv file 
         dataUpperbound = (int)(data.Count * map(dataMode, 1, 3, 0.33f, 1));
         dataLowerbound = dataUpperbound - ((int)(data.Count * dataOffset));
         rowCount = dataLowerbound;
@@ -43,11 +52,11 @@ public class icemass_datareader : MonoBehaviour
 
     void Start()
     {
-        if (tag != "spike") //this is EXTREMELY IMPORTANT but I forgot how it works
-        {
-            InvokeRepeating("SpawnObject", startDelay, timeInterval);
-        }
-        else { SpawnObject(); }
+    //    if (tag != "spike") //this is EXTREMELY IMPORTANT but I forgot how it works
+     //   {
+      InvokeRepeating("SpawnObject", startDelay, timeInterval);
+      //  }
+      //  else { SpawnObject(); }
         
     }//end Start()
 
@@ -61,14 +70,23 @@ public class icemass_datareader : MonoBehaviour
         {
             rowCount = dataLowerbound;
         }
-        float iceMass = System.Convert.ToSingle(data[rowCount]["diff"]);
-        iceMass = Mathf.Abs(iceMass);
-        iceMass = Mathf.Pow(iceMass, 0.01f);
+        //float iceMass = System.Convert.ToSingle(data[rowCount]["diff"]);
+        //iceMass = Mathf.Abs(iceMass);
+        //iceMass = 2 - Mathf.Pow(iceMass, 0.01f);
 
-        print("ice mass for row " + rowCount + ": " + data[rowCount]["diff"]);
+        if (prefabIceberg != null)
+        {
+            float iceMass = map(System.Convert.ToSingle(data[rowCount]["IceMass Change"]), -5248.44f, 66.04f, 0.01f, 1);
 
-        GameObject iceberg = Instantiate(prefabIceberg, transform.position, transform.rotation);
-        iceberg.transform.localScale = new Vector2(iceMass, iceMass);
+            print("ice mass for row " + rowCount + ": " + data[rowCount]["IceMass Change"]);
+
+            GameObject iceberg = Instantiate(prefabIceberg, transform.position, transform.rotation);
+            iceberg.transform.localScale = new Vector2(iceMass * 2, iceMass * 2);
+            iceberg.layer = 2;
+        }
+        score = System.Convert.ToSingle(data[rowCount]["Year"]);
+        ScoreTxt.text = "Ice Cap Year:  " + score.ToString("F");
+
     }
 
     float map(float value, float domainMin, float domainMax, float newDomainMin, float newDomainMax)

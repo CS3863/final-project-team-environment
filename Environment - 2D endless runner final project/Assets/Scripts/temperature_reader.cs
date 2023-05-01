@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.SocialPlatforms.Impl;
 
 
 /*
@@ -21,6 +22,7 @@ public class temperature_reader : MonoBehaviour
     public Material material;
     // dataMode must be value between [1 , 3]
     public int dataMode;
+    public TMP_Text oceanLabel;
 
     private float dataOffset = 0.33f;
     private int dataUpperbound = 0;
@@ -58,6 +60,9 @@ public class temperature_reader : MonoBehaviour
         float greenChange = map(System.Convert.ToSingle((float)(data[rowCount]["Value"])), -0.64f, 1.35f, -0.5f, 1f);
         float blueChange = map(System.Convert.ToSingle((float)(data[rowCount]["Value"])), -0.64f, 1.35f, 1, -1);
         material.color = new Color(redChange, 1f + greenChange, 2f + blueChange);
+
+        float oceanYear = System.Convert.ToSingle(data[rowCount]["Year"]);
+        oceanLabel.text = "Ocean Temperature Year:  " + oceanYear.ToString("F");
     }
 
     float map(float value, float domainMin, float domainMax, float newDomainMin, float newDomainMax)

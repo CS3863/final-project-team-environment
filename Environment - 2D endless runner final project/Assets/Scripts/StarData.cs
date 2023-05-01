@@ -7,88 +7,45 @@ public class StarData : MonoBehaviour
   * Tutorial link
   * https://github.com/tikonen/blog/tree/master/csvreader
   * */
+    public Sprite mySprite;
 
-  public StarGenerator starGenerator;
+    private int rowCount = 0;
+    private GameObject[] stars = new GameObject[300];
 
     List<Dictionary<string, object>> data; 
-    public GameObject myCube;//prefab
-    int cubeCount; //variable 
     string[] dataSets = {"Globe at Night 2021 SQM", "Globe at Night 2020 SQM", "Globe at Night 2019 SQM", "Globe at Night 2018 SQM", "Globe at Night 2017 SQM", "Globe at Night 2016 SQM", "Globe at Night 2015 SQM", "Globe at Night 2014 SQM", "Globe at Night 2013 SQM", "Globe at Night 2012 SQM", "Globe at Night 2011 SQM", "Globe at Night 2010 SQM", "Globe at Night 2009 SQM", "Globe at Night 2008 SQM", "Globe at Night 2007 SQM" };
+    
+    //  -12 < x < 12, -8 < y < 1
+    void Awake() {
+        data = CSVReader.Read(dataSets[0]);
 
-   /* void Awake()
-    {
-
-        data = CSVReader.Read("udata");//udata is the name of the csv file 
-
-        for (var i = 0; i < data.Count; i++)
+        for (int i = 0; i < stars.Length; i++)
         {
-            //name, age, speed, description, is the headers of the database
-            print("name " + data[i]["name"] + " " +
-                   "age " + data[i]["age"] + " " +
-                   "speed " + data[i]["speed"] + " " +
-                   "desc " + data[i]["description"]);
+            stars[i] = new GameObject();
+            SpriteRenderer renderer = stars[i].AddComponent<SpriteRenderer>();
+            renderer.sprite = mySprite;
+            stars[i].transform.localScale = new Vector2(0.1f, 0.1f);
+            stars[i].transform.position = new Vector2(Random.Range(-12f, 12f), Random.Range(-3.78f, 1f));
+            stars[i].layer = -1;
         }
+     }
 
-
-    }//end Awake()
-    */
-
-    // Use this for initialization
-    void Start()
+        void Start()
     {
-        /*
-        for (var i = 0; i < data.Count; i++)
-        {
-            object age = data[i]["age"];//get age data
-            cubeCount += (int)age;//convert age data to int and add to cubeCount
-            Debug.Log("cubeCount" +cubeCount);
-            Debug.Log("variable i" + i);
-
-        }
-        Debug.Log("end start" +cubeCount);
-        */
-
-    }//end Start()
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        data = CSVReader.Read(dataSets[0]); 
-
-        transform.Translate(Vector2.left * starGenerator.currentSpeed * Time.deltaTime);
-
-        for(int i = 1; i < dataSets.Length; i++)
-        {
-            //datasetName = dataSets[currentDataset += 1]
-            data = CSVReader.Read(dataSets[i]); 
-
-
-
-            Debug.Log("data " + data);
-
-
-
-
-
-        }
        
-       // if data.count < currentEntry
-        
-
-    /*
-         Debug.Log("update cubeCount" +cubeCount);
-
-        //As long as cube count is not zero, instantiate prefab
-        while (cubeCount > 0)
-        {
-            Instantiate(myCube);
-            cubeCount--;
-            Debug.Log("while cubeCount" +cubeCount);
-
-        }
-    */
 
     }
-    //end Update()
+
+    public void GenerateNextStarWithGap()
+    {
+        float Wait = Random.Range(1.0f, 2.2f);
+        Invoke("updateStars", Wait);
+    }
+    void updateStars()
+    {
+        // mySprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100.0f);
+        //Instantiate(mySprite, transform.position, transform.rotation);
+
+    }
+
 }
