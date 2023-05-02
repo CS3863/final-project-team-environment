@@ -14,17 +14,17 @@ public class DeathScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SceneManager.LoadScene("1st Scene");
         }
 
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             SceneManager.LoadScene("2nd Scene");
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             SceneManager.LoadScene("3rd Scene");
         }

@@ -729,7 +729,7 @@ RectTransform:
   m_GameObject: {fileID: 1461501974}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1603054129}
@@ -739,7 +739,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14.4343, y: 14.4354}
+  m_AnchoredPosition: {x: -69, y: 165}
   m_SizeDelta: {x: 2077.2876, y: 1123.3379}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1461501976
@@ -976,11 +976,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'press i to play level 1.
+  m_text: 'press 1 to play level 1.
 
-    press o to play level 2.
+    press 2 to play level 2.
 
-    press p to
+    press 3 to
     play level 3.
 
 '

@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02bcc06a595a8f541ae07fe91e3dcddd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myCube: {fileID: 0}
+  mySprite: {fileID: 21300000, guid: fc0a3a9f5befcad4fac3e53bfc207d2c, type: 3}
+  dataMode: 0
+  starMaterial: {fileID: 2100000, guid: dc98bf2a1398f8c49905783e4025263f, type: 2}
 --- !u!114 &3117615583483875913
 MonoBehaviour:
   m_ObjectHideFlags: 0

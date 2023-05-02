@@ -64,7 +64,7 @@ public class PlayerScript : MonoBehaviour
             isAlive = false;
             Debug.Log("collision");
             Destroy(this.gameObject);
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(600);
             SceneManager.LoadScene("Death Scene");
             //Application.Quit();
             //SpikeGenerator.currentSpeed = 0;
