@@ -22,7 +22,6 @@ public class icemass_datareader : MonoBehaviour
   * https://github.com/tikonen/blog/tree/master/csvreader
   * */
 
-    
     public GameObject prefabIceberg;
     public int dataMode;
 
@@ -46,19 +45,13 @@ public class icemass_datareader : MonoBehaviour
         dataLowerbound = dataUpperbound - ((int)(data.Count * dataOffset));
         rowCount = dataLowerbound;
         print("ICEMASS!!!! === data mode: " + dataMode + ", data upperbound: " + dataUpperbound + ", data lowerbound: " + dataLowerbound);
-
-        rowCount = dataLowerbound;
     }
+
 
     void Start()
     {
-    //    if (tag != "spike") //this is EXTREMELY IMPORTANT but I forgot how it works
-     //   {
       InvokeRepeating("SpawnObject", startDelay, timeInterval);
-      //  }
-      //  else { SpawnObject(); }
-        
-    }//end Start()
+    }
 
     void SpawnObject()
     {
@@ -70,9 +63,6 @@ public class icemass_datareader : MonoBehaviour
         {
             rowCount = dataLowerbound;
         }
-        //float iceMass = System.Convert.ToSingle(data[rowCount]["diff"]);
-        //iceMass = Mathf.Abs(iceMass);
-        //iceMass = 2 - Mathf.Pow(iceMass, 0.01f);
 
         if (prefabIceberg != null)
         {
@@ -82,12 +72,11 @@ public class icemass_datareader : MonoBehaviour
             print("ice mass for row " + rowCount + ": " + data[rowCount]["IceMass Change"]);
 
             GameObject iceberg = Instantiate(prefabIceberg, transform.position, transform.rotation);
-            iceberg.transform.localScale = new Vector2(iceMass * 2, iceMass * 2);
+            iceberg.transform.localScale = new Vector2(iceMass * 0.5f, iceMass * 0.5f);
             iceberg.layer = 2;
         }
         score = System.Convert.ToSingle(data[rowCount]["Year"]);
         ScoreTxt.text = "Ice Cap Year:  " + score.ToString("F");
-
     }
 
     float map(float value, float domainMin, float domainMax, float newDomainMin, float newDomainMax)
